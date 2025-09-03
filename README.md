@@ -52,13 +52,21 @@ This project was built as part of the **Software Engineer Screening Task**.
 ## Project Structure
 
 projectManagementSystem/
+
 ├─ backend/
+
 │  ├─ backend/        # Django settings, urls, schema
+
 │  ├─ core/           # models, schema, admin
+
 │  ├─ manage.py
+
 │
+
 ├─ frontend/          # React app 
+
 ├─ screenshots/       
+
 ├─ README.md
 
 ---
