@@ -45,15 +45,25 @@ This project was built as part of the **Software Engineer Screening Task**.
 
 - **Backend:** Django 5, Graphene-Django, psycopg, Django Admin  
 - **Frontend:** React 18, TypeScript, Apollo Client, TailwindCSS  
-- **Database:** PostgreSQL (local or Docker)  
+- **Database:** PostgreSQL (local or Docker)
 
 ---
 
-## ⚙️ Setup Instructions
+## Project Structure
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/PariBainsla/projectManagementSystem.git
+projectManagementSystem/
+├─ backend/
+│  ├─ backend/        # Django settings, urls, schema
+│  ├─ core/           # models, schema, admin
+│  ├─ manage.py
+│
+├─ frontend/          # React app 
+├─ screenshots/       
+├─ README.md
+
+---
+
+## Screenshots
 
 ---
 
@@ -70,6 +80,88 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+---
+
+## Configure PostgreSQL in backend/settings.py:
+
+DATABASES = {
+  "default": {
+    "ENGINE": "django.db.backends.postgresql",
+    "NAME": "project_db",
+    "USER": "postgres",
+    "PASSWORD": "postsql",
+    "HOST": "localhost",
+    "PORT": "5432",
+  }
+}
+
+---
+
+## Terminal Code
+
+# Run migrations
+python manage.py makemigrations
+python manage.py migrate
+
+# Create superuser
+python manage.py createsuperuser
+
+# Start development server
+python manage.py runserver
+
+---
+
+## Example GraphQL Queries
+
+# List all projects
+
+query {
+  allProjects {
+    id
+    name
+    status
+    organization { id name }
+  }
+}
+
+# Create a project
+
+mutation {
+  createProject(organizationId: 1, name: "Test Project", description: "Demo") {
+    project {
+      id
+      name
+      description
+      createdAt
+    }
+  }
+}
+
+# Add a task
+
+mutation {
+  createTask(projectId: 1, title: "First Task", status: "TODO") {
+    task {
+      id
+      title
+      status
+    }
+  }
+}
+
+# Comment on a task
+
+mutation {
+  createTaskComment(taskId: 1, content: "Finish by EOD") {
+    comment {
+      id
+      content
+      createdAt
+    }
+  }
+}
+
 
 cd projectManagementSystem
 
