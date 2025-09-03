@@ -102,7 +102,12 @@ DATABASES = {
 
 # Run migrations
 python manage.py makemigrations
+
 python manage.py migrate
+
+GraphQL Playground → http://127.0.0.1:8000/graphql/
+
+Django Admin → http://127.0.0.1:8000/admin/
 
 # Create superuser
 python manage.py createsuperuser
