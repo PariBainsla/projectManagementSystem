@@ -13,8 +13,17 @@ class OrganizationType(DjangoObjectType):
 class ProjectType(DjangoObjectType):
     class Meta:
         model = Project
-        fields = ("id", "organization", "name", "description", "created_by", "created_at")
-
+        fields = (
+            "id",
+            "organization",
+            "name",
+            "description",
+            "status",
+            "due_date",
+            "created_by",
+            "created_at",
+            "tasks",   
+        )
 class TaskType(DjangoObjectType):
     class Meta:
         model = Task
